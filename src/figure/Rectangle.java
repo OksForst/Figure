@@ -9,8 +9,8 @@ import java.util.Locale;
  * @author 032KolesnikovaOS
  */
 public class Rectangle extends AbstractFigure {
-  int sideLenght1 = 3;
-  int sideLenght2 = 3;
+    private int sideLenght1 ;
+    private int sideLenght2 ;
 
     public String getName() {
          return "Прямоугольник";
