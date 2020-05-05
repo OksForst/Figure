@@ -7,32 +7,33 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.logging.LogRecord;
 
 
 public class Figure {
 
     public static void main(String[] args) throws IOException {
-        String fileName = getFileName()+ ".txt";
+        String fileName = getFileName() + ".txt";
         List<String> lines = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());
-        for (String x:lines){
+        for (String x : lines) {
             String figure = lines.get(0);
             int parametr = Integer.parseInt(lines.get(1));
 
-            if (figure.equals("CIRCLE") ){
-                Circle Circle =  new Circle();
+            if (figure.equals("CIRCLE")) {
+                Circle Circle = new Circle();
                 Circle.setRadius(parametr);
                 Circle.getInfoFigure();
             }
 
-            if (figure.equals("SQUARE") ){
-                Square Square =  new Square();
+            if (figure.equals("SQUARE")) {
+                Square Square = new Square();
                 Square.setsideLenght(parametr);
                 Square.getInfoFigure();
             }
 
-            if (figure.equals("RECTANGLE") ){
+            if (figure.equals("RECTANGLE")) {
                 int parametr1 = Integer.parseInt(lines.get(2));
-                Rectangle Rectangle =  new Rectangle();
+                Rectangle Rectangle = new Rectangle();
                 Rectangle.setsideLenght1(parametr, parametr1);
                 Rectangle.getInfoFigure();
             }
