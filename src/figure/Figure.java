@@ -7,13 +7,13 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.logging.LogRecord;
 
 
 public class Figure {
 
     public static void main(String[] args) throws IOException {
-        String fileName = getFileName() + ".txt";
+        //String fileName = getFileName() + ".txt";
+        String fileName = getFileName();
         List<String> lines = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());
         for (String x : lines) {
             String figure = lines.get(0);
@@ -40,10 +40,14 @@ public class Figure {
 
         }
     }
-    public static String getFileName() throws IOException{
+
+    public static String getFileName() throws IOException {
         System.out.println("Введите название файла");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String fileName = in.readLine();
+
+            String fileName = in.readLine() + ".txt";
+
+
         return fileName;
     }
 }
