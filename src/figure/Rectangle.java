@@ -1,5 +1,7 @@
 package figure;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.util.Locale;
@@ -11,10 +13,15 @@ import java.util.Locale;
 public class Rectangle extends AbstractFigure {
     private int sideLenght1;
     private int sideLenght2;
+     private String fileName;
 
-    public void setsideLenght1(int sideLenght1, int sideLenght2) {
+    public void setsideLenght(int sideLenght1, int sideLenght2) {
         this.sideLenght1 = sideLenght1;
         this.sideLenght2 = sideLenght2;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
 
@@ -39,18 +46,26 @@ public class Rectangle extends AbstractFigure {
     }
 
 
-    public void getInfoFigure() {
+    public void getInfoFigure() throws IOException{
+         String fileName = Main.getFileName();
+        if (fileName.equals(".txt")){
         System.out.println("Название: " + getName());
         System.out.println("Площадь: " + (int) getSquare());
         System.out.println("Периметр: " + (int) getPerimeter());
-        if (sideLenght1 != sideLenght2) {
-            System.out.println("Длина (размер длинной стороны): " + Math.max(sideLenght1, sideLenght2));
-            System.out.println("Ширина (размер короткой стороны): " + Math.min(sideLenght1, sideLenght2));
-        } else {
-            System.out.println("Фигура является квадратом. Длина стороны : " + sideLenght1);
-        }
-
+        System.out.println("Длина (размер длинной стороны): " + Math.max(sideLenght1, sideLenght2));
+        System.out.println("Ширина (размер короткой стороны): " + Math.min(sideLenght1, sideLenght2));
         System.out.println("Длина дигонали : " + String.format(Locale.US, "%.2f", getDiagonalLenght()));
     }
+        else {
+       try (FileWriter nFile = new FileWriter(fileName)) {
+       nFile.write("Название: " + getName() + "\n" +
+                   "Площадь: " + (int) getSquare() + "\n" +
+                   "Периметр: " + (int) getPerimeter() + "\n" +
+                   "Длина (размер длинной стороны): " + Math.max(sideLenght1, sideLenght2) + "\n" +
+                   "Ширина (размер короткой стороны): " + Math.min(sideLenght1, sideLenght2) + "\n" +
+                   "Длина дигонали : " + String.format(Locale.US, "%.2f", getDiagonalLenght()));
 
+}
+        }
+    }
 }

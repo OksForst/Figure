@@ -2,19 +2,23 @@ package figure;
 
 import static java.lang.Math.pow;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Locale;
 import java.io.FileWriter;
 
 public class Circle extends AbstractFigure {
     private int radius;
     double PI = 3.14;
+    private String fileName;
 
     public void setRadius(int radius) {
         this.radius = radius;
     }
+    
+      public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+      
     public String getName() {
         return "Круг";
     }
@@ -33,30 +37,28 @@ public class Circle extends AbstractFigure {
         return p;
     }
 
-
    public void getInfoFigure() throws IOException {
+       String fileName = Main.getFileName();
+       if (fileName.equals(".txt")){
+        System.out.println ("Название: " + getName());
+        System.out.println ("Площадь: " + String.format(Locale.US ,"%.2f",getSquare()));
+        System.out.println ("Периметр: " + String.format(Locale.US ,"%.2f", getPerimeter()));
+        System.out.println ("Радиус: " + radius);
+        System.out.println ("Диаметр: " + getDiameter());
+       }
+       else {
+       try (FileWriter nFile = new FileWriter(fileName)) {
 
+           nFile.write("Название: " + getName() + "\n" +
+                       "Площадь: "  + String.format(Locale.US, "%.2f", getSquare()) + "\n" +
+                       "Периметр: " + String.format(Locale.US, "%.2f", getPerimeter()) + "\n" +
+                       "Радиус: " + radius + "\n" +
+                       "Диаметр: " + getDiameter());
 
-
-        //System.out.println ("Название: " + getName());
-        //System.out.println ("Площадь: " + String.format(Locale.US ,"%.2f",getSquare()));
-        //System.out.println ("Периметр: " + String.format(Locale.US ,"%.2f", getPerimeter()));
-        //System.out.println ("Радиус: " + radius);
-       // System.out.println ("Диаметр: " + getDiameter());
-       System.out.println("Введите название файла");
-       BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-       String fileName = in.readLine() + ".txt";
-       try (FileWriter nFile = new FileWriter(in)) {
-
-           nFile.write("Название: " + getName() +
-                   "Площадь: " + String.format(Locale.US, "%.2f", getSquare()) +
-                   "Периметр: " + String.format(Locale.US, "%.2f", getPerimeter()) + "Радиус: " + radius + "Диаметр: " + getDiameter());
-
-           nFile.close();
+           
+       }
+       }
        }
 
-
-   }
-
 }
+
