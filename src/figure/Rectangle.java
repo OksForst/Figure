@@ -13,17 +13,11 @@ import java.util.Locale;
 public class Rectangle extends AbstractFigure {
     private int sideLenght1;
     private int sideLenght2;
-     private String fileName;
 
     public void setsideLenght(int sideLenght1, int sideLenght2) {
         this.sideLenght1 = sideLenght1;
         this.sideLenght2 = sideLenght2;
     }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
 
     public String getName() {
         return "Прямоугольник";
@@ -47,7 +41,7 @@ public class Rectangle extends AbstractFigure {
 
 
     public void getInfoFigure() throws IOException{
-         String fileName = Main.getFileName();
+        String fileName = Main.getFileName();
         if (fileName.equals(".txt")){
         System.out.println("Название: " + getName());
         System.out.println("Площадь: " + (int) getSquare());

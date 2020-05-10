@@ -9,7 +9,6 @@ import java.util.Locale;
 
 public class Square extends AbstractFigure  {
     private int sideLenght;
-    private String fileName;
 
     public void setsideLenght(int sideLenght) {
         this.sideLenght = sideLenght;
@@ -20,9 +19,7 @@ public class Square extends AbstractFigure  {
         return "Квадрат";
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+
 
 
     public double getSquare() {

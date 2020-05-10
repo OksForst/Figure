@@ -9,15 +9,13 @@ import java.io.FileWriter;
 public class Circle extends AbstractFigure {
     private int radius;
     double PI = 3.14;
-    private String fileName;
+
 
     public void setRadius(int radius) {
         this.radius = radius;
     }
     
-      public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+
       
     public String getName() {
         return "Круг";
@@ -38,7 +36,7 @@ public class Circle extends AbstractFigure {
     }
 
    public void getInfoFigure() throws IOException {
-       String fileName = Main.getFileName();
+       fileName = Main.getFileName();
        if (fileName.equals(".txt")){
         System.out.println ("Название: " + getName());
         System.out.println ("Площадь: " + String.format(Locale.US ,"%.2f",getSquare()));
