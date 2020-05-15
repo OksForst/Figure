@@ -9,15 +9,22 @@ import java.util.Locale;
 
 public class Square extends AbstractFigure  {
     private int sideLenght;
+    
+    public Square(int ... parameters) {
+        sideLenght = parameters[0];
+    }
 
-    public void setsideLenght(int sideLenght) {
+    public void setSideLenght(int sideLenght) {
         this.sideLenght = sideLenght;
     }
 
+   
 
     public String getName() {
         return "Квадрат";
     }
+
+   
 
 
 
@@ -38,7 +45,7 @@ public class Square extends AbstractFigure  {
     }
 
     public void getInfoFigure() throws IOException {
-        String fileName = Main.getFileName();
+        String fileName = Figure.getFileName();
         if (fileName.equals(".txt")){
         System.out.println ("Название: " + getName());
         System.out.println ("Площадь: " + (int)getSquare());

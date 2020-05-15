@@ -14,10 +14,16 @@ public class Rectangle extends AbstractFigure {
     private int sideLenght1;
     private int sideLenght2;
 
-    public void setsideLenght(int sideLenght1, int sideLenght2) {
+    public void setSideLenght(int sideLenght1, int sideLenght2) {
         this.sideLenght1 = sideLenght1;
         this.sideLenght2 = sideLenght2;
     }
+
+    public Rectangle(int ... parameters) {
+        sideLenght1 = parameters[0];
+        sideLenght2 = parameters[1];
+    }
+    
 
     public String getName() {
         return "Прямоугольник";
@@ -41,7 +47,7 @@ public class Rectangle extends AbstractFigure {
 
 
     public void getInfoFigure() throws IOException{
-        String fileName = Main.getFileName();
+        String fileName = Figure.getFileName();
         if (fileName.equals(".txt")){
         System.out.println("Название: " + getName());
         System.out.println("Площадь: " + (int) getSquare());

@@ -2,7 +2,7 @@ package figure;
 
 import java.io.IOException;
 
-public abstract  class AbstractFigure {
+public abstract class AbstractFigure {
    protected String fileName;
 
    public void setFileName(String fileName) {
