@@ -21,17 +21,17 @@ public class Rectangle extends AbstractFigure {
     }
 
     public double getSquare() {
-        var s = sideLenght1 * sideLenght2;
+        double s = sideLenght1 * sideLenght2;
         return s;
     }
     
     public double getPerimeter() {
-        var p = 2 * (sideLenght1 + sideLenght2);
+        double p = 2 * (sideLenght1 + sideLenght2);
         return p;
     }
 
     public double getDiagonalLenght() {
-        var diagonal = sqrt(pow(sideLenght1, 2) + pow(sideLenght2, 2));
+        double diagonal = sqrt(pow(sideLenght1, 2) + pow(sideLenght2, 2));
         return diagonal;
     }
     

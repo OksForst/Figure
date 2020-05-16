@@ -19,17 +19,17 @@ public class Circle extends AbstractFigure {
     }
 
     public double getSquare() {
-        var s = PI * pow(radius, 2);
+        double s = PI * pow(radius, 2);
         return s;
     }
     
     public int getDiameter() {
-        var d = 2 * radius;
+        int d = 2 * radius;
         return d;
     }
 
     public double getPerimeter() {
-        var p = 2 * PI * radius;
+        double p = 2 * PI * radius;
         return p;
     }
 

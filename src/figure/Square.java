@@ -19,17 +19,17 @@ public class Square extends AbstractFigure  {
     }
 
     public double getSquare() {
-        var s =  pow(sideLenght,2);
+        double s =  pow(sideLenght,2);
         return s;
     }
 
     public double getPerimeter() {
-        var p = 4 *  sideLenght;
+        double p = 4 *  sideLenght;
         return p;
     }
 
     public double getDiagonalLenght() {
-        var diagonal = sideLenght * sqrt(2);
+        double diagonal = sideLenght * sqrt(2);
         return diagonal;
     }
 
