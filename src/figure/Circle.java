@@ -8,7 +8,6 @@ import java.io.FileWriter;
 
 public class Circle extends AbstractFigure {
     private int radius;
-    double PI = 3.14;
 
     public Circle(int ... parameters) {
         radius = parameters[0];
@@ -19,7 +18,7 @@ public class Circle extends AbstractFigure {
     }
 
     public double getSquare() {
-        double s = PI * pow(radius, 2);
+        double s = Math.PI * pow(radius, 2);
         return s;
     }
     
@@ -29,7 +28,7 @@ public class Circle extends AbstractFigure {
     }
 
     public double getPerimeter() {
-        double p = 2 * PI * radius;
+        double p = 2 * Math.PI * radius;
         return p;
     }
 
