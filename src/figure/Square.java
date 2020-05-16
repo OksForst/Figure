@@ -1,4 +1,3 @@
-
 package figure;
 
 import java.io.FileWriter;
@@ -7,6 +6,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import java.util.Locale;
 
+
 public class Square extends AbstractFigure  {
     private int sideLenght;
     
@@ -14,20 +14,9 @@ public class Square extends AbstractFigure  {
         sideLenght = parameters[0];
     }
 
-    public void setSideLenght(int sideLenght) {
-        this.sideLenght = sideLenght;
-    }
-
-   
-
     public String getName() {
         return "Квадрат";
     }
-
-   
-
-
-
 
     public double getSquare() {
         var s =  pow(sideLenght,2);
@@ -51,17 +40,16 @@ public class Square extends AbstractFigure  {
         System.out.println ("Площадь: " + (int)getSquare());
         System.out.println ("Периметр: " + (int) getPerimeter());
         System.out.println ("Длина стороны : " + sideLenght);
-        System.out.println ("Длина дигонали : " + String.format(Locale.US ,"%.2f", getDiagonalLenght()));
-    }
-        else {
-       try (FileWriter nFile = new FileWriter(fileName)) {
-       nFile.write("Название: " + getName() + "\n" +
+        System.out.println ("Длина дигонали : "
+                + String.format(Locale.US ,"%.2f", getDiagonalLenght()));
+        } else {
+            try (FileWriter nFile = new FileWriter(fileName)) {
+                nFile.write("Название: " + getName() + "\n" +
                     "Площадь: " + (int)getSquare() + "\n" +
                     "Периметр: " + (int) getPerimeter() + "\n" +
                     "Длина стороны : " + sideLenght + "\n" +
                     "Длина дигонали : " + String.format(Locale.US ,"%.2f", getDiagonalLenght()));
-       }
-
-}
+            }
+        }
     }
 }
