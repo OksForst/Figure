@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 
-public class Figure {
+public class Main {
     public static void main(String[] args) throws IOException {
         String fileName = getFileName();
             if (Files.exists(Paths.get(fileName))) {

@@ -34,7 +34,7 @@ public class Square extends AbstractFigure  {
     }
 
     public void getInfoFigure() throws IOException {
-        String fileName = Figure.getFileName();
+        String fileName = Main.getFileName();
         if (fileName.equals(".txt")){
         System.out.println ("Название: " + getName());
         System.out.println ("Площадь: " + (int)getSquare());
