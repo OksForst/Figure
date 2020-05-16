@@ -16,7 +16,7 @@ public class Main {
             if (Files.exists(Paths.get(fileName))) {
                 AbstractFigure figureFromFile = getFigureFromFile(fileName);
                     if (figureFromFile == null) {
-                        System.out.println("Неизвестная фигура!");
+                        System.out.println("Неизвестная фигура");
                     } else {
                         figureFromFile.getInfoFigure();
                     }
