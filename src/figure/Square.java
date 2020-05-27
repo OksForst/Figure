@@ -33,8 +33,9 @@ public class Square extends AbstractFigure  {
         return diagonal;
     }
 
-    public void getInfoFigure() throws IOException {
-        String fileName = Main.getFileName();
+    public void getInfoFigure(String fileNameOut) throws IOException {
+        //String fileName = Main.getFileName();
+        String fileName = AbstractFigure.getFileName();
         if (fileName.equals(".txt")){
         System.out.println ("Название: " + getName());
         System.out.println ("Площадь: " + (int)getSquare());

@@ -12,44 +12,37 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String fileName = getFileName();
-            if (Files.exists(Paths.get(fileName))) {
-                AbstractFigure figureFromFile = getFigureFromFile(fileName);
-                    if (figureFromFile == null) {
-                        System.out.println("Неизвестная фигура");
-                    } else {
-                        figureFromFile.getInfoFigure();
-                    }
+        //String fileNameIn = getFileName();
+        String fileNameIn = args[0];
+        String fileNameOut = args[1];
+            if (Files.exists(Paths.get(fileNameIn))) {
+                AbstractFigure figureFromFile = getFigureFromFile(fileNameIn);
+                if (figureFromFile == null) {
+                    System.out.println("Неизвестная фигура");
+                } else {
+                    figureFromFile.getInfoFigure(fileNameOut);
+                }
             } else {
-            System.out.println("Данный файл не найден!");
+                System.out.println("Данный файл не найден!");
             }
+        
     }
-
-    public static String getFileName() throws IOException {
-        System.out.println("Введите название файла:");
-        Reader reader = new InputStreamReader(System.in);
-        BufferedReader in = new BufferedReader(reader);
-        String fileName = in.readLine() + ".txt";
-        return fileName;
-    }
-
-
+    
     public static AbstractFigure getFigureFromFile(String fileName) throws IOException {
         AbstractFigure figureOfFile = null;
         List<String> lines = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());
         String figure = lines.get(0);
         switch (figure) {
-             case "CIRCLE":
-                 figureOfFile = new Circle(Integer.parseInt(lines.get(1)));
-                 break;
-             case "SQUARE":
-                 figureOfFile = new Square(Integer.parseInt(lines.get(1)));
-                 break;
-             case "RECTANGLE":
-                 figureOfFile = new Rectangle(Integer.parseInt(lines.get(1)), Integer.parseInt(lines.get(2)));
-                 break;
+            case "CIRCLE":
+                figureOfFile = new Circle(Integer.parseInt(lines.get(1)));
+                break;
+            case "SQUARE":
+                figureOfFile = new Square(Integer.parseInt(lines.get(1)));
+                break;
+            case "RECTANGLE":
+                figureOfFile = new Rectangle(Integer.parseInt(lines.get(1)), Integer.parseInt(lines.get(2)));
+                break;
         }
         return figureOfFile;
     }
 }
-
