@@ -35,9 +35,7 @@ public class Rectangle extends AbstractFigure {
         return diagonal;
     }
     
-    public void getInfoFigure(String fileNameOut) throws IOException{
-       //String fileName = Main.getFileName();
-        String fileName = AbstractFigure.getFileName();
+    public void getInfoFigure(String fileName) throws IOException{
         if (fileName.equals(".txt")){
             System.out.println("Название: " + getName());
             System.out.println("Площадь: " + (int) getSquare());

@@ -32,9 +32,7 @@ public class Circle extends AbstractFigure {
         return p;
     }
     
-    public void getInfoFigure(String fileNameOut) throws IOException {
-        //fileName = Main.getFileName();
-        String fileName = AbstractFigure.getFileName();
+    public void getInfoFigure(String fileName) throws IOException{
         if (fileName.equals(".txt")) {
             System.out.println("Название: " + getName());
             System.out.println("Площадь: "
