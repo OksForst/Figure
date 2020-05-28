@@ -12,7 +12,6 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //String fileNameIn = getFileName();
         String fileNameIn = args[0];
         String fileNameOut = args[1];
             if (Files.exists(Paths.get(fileNameIn))) {
