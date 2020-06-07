@@ -7,7 +7,7 @@ import static java.lang.Math.sqrt;
 import java.util.Locale;
 
 
-public class Rectangle extends AbstractFigure {
+public class Rectangle implements Shape {
     private int sideLenght1;
     private int sideLenght2;
 
@@ -36,7 +36,7 @@ public class Rectangle extends AbstractFigure {
     }
     
     public void getInfoFigure(String fileName) throws IOException{
-        if (fileName.equals(".txt")){
+        if (fileName.length()==0){
             System.out.println("Название: " + getName());
             System.out.println("Площадь: " + (int) getSquare());
             System.out.println("Периметр: " + (int) getPerimeter());

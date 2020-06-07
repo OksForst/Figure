@@ -1,12 +1,13 @@
 package figure;
 
+import java.io.File;
 import static java.lang.Math.pow;
 import java.io.IOException;
 import java.util.Locale;
 import java.io.FileWriter;
 
 
-public class Circle extends AbstractFigure {
+public class Circle implements Shape {
     private int radius;
     
     public Circle(int ... parameters) {
@@ -33,7 +34,8 @@ public class Circle extends AbstractFigure {
     }
     
     public void getInfoFigure(String fileName) throws IOException{
-        if (fileName.equals(".txt")) {
+        if (fileName.length()==0) {
+      
             System.out.println("Название: " + getName());
             System.out.println("Площадь: "
                     + String.format(Locale.US, "%.2f", getSquare()));
