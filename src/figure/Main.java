@@ -1,12 +1,17 @@
 package figure;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.lang.Class;
+
 
 public class Main {
+    //private static ErrorManager LOG;
+    
     public static void main(String[] args) throws Exception {
         String fileNameIn = args[0];
         String fileNameOut = "";
@@ -16,15 +21,14 @@ public class Main {
         }
     
         if (Files.exists(Paths.get(fileNameIn))) {
-            Object figureFromFile = createObject(fileNameIn);
+            String nameClass = getFigureFromFile(fileNameIn);
+            Class figureFromFile = getClassInstance(nameClass);
             if (figureFromFile == null) {
                 System.out.println("Неизвестная фигура");
             } else {
                 Shape.getInfoFigure(fileNameOut);
             }
-        } else {
-            System.out.println("Данный файл не найден!");
-        }
+        } else System.out.println("Данный файл не найден!");
         
     }
     //public static Class getFigureFromFile(String fileName) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
@@ -56,21 +60,29 @@ public class Main {
     //return figureFromFile;
     //}
     
-    public static Class createObject(String fileName) throws Exception {
-        Class myClass = null;
+    public static String getFigureFromFile(String fileName) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());
         String className = lines.get(0);
         String classname1 = className.toLowerCase();
         String classname2 = classname1.substring(0, 1).toUpperCase() + classname1.substring(1);
-        try {
-            Class clazz = Class.forName("figure." + classname2);
-            Class[] params = new Class[]{int.class};
-            myClass = (Class) clazz.getConstructor().newInstance(Integer.parseInt(lines.get(1)));
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-    
-        return myClass;
+        
+        return classname2;
     }
-}
+    
+    
+    public static Class getClassInstance(String className) throws Exception {
+        Class myClass = null;
+        try {
+            Class clazz = Class.forName(className);
+            myClass = (Class) clazz.getDeclaredConstructor().newInstance();
+    
+        } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
+                //LOG.error(e);
+                System.exit(1);
+            }
+       
+        return myClass;
+        }
+    }
+
 
