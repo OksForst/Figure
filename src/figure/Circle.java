@@ -7,12 +7,13 @@ import java.util.Locale;
 import java.io.FileWriter;
 
 
-public class Circle implements Shape {
+public class Circle extends Figure implements Shape {
     private int radius;
     
  public Circle(int ... parameters) {
        radius = parameters[0];
    }
+   
     
     public String getName() {
         return "Круг";

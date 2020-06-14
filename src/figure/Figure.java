@@ -7,22 +7,20 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.lang.Class;
+import java.util.logging.ErrorManager;
 
 
-public class Main {
-    //private static ErrorManager LOG;
+public class Figure {
     
     public static void main(String[] args) throws Exception {
         String fileNameIn = args[0];
         String fileNameOut = "";
         
-        if (args.length > 1) {
-            fileNameOut = args[1];
-        }
+        if (args.length > 1) fileNameOut = args[1];
     
         if (Files.exists(Paths.get(fileNameIn))) {
             String nameClass = getFigureFromFile(fileNameIn);
-            Class figureFromFile = getClassInstance(nameClass);
+            Figure figureFromFile = getClassInstance(nameClass);
             if (figureFromFile == null) {
                 System.out.println("Неизвестная фигура");
             } else {
@@ -70,19 +68,19 @@ public class Main {
     }
     
     
-    public static Class getClassInstance(String className) throws Exception {
-        Class myClass = null;
+    private static Figure getClassInstance(String className) throws Exception, ClassNotFoundException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
+        Figure shape = null;
         try {
             Class clazz = Class.forName(className);
-            myClass = (Class) clazz.getDeclaredConstructor().newInstance();
-    
-        } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
-                //LOG.error(e);
-                System.exit(1);
+            shape = ( Figure ) clazz.getDeclaredConstructor().newInstance();
             }
-       
-        return myClass;
+            catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
+            //LOG.error(e);
+            System.exit(1);
+            }
+        return shape;
         }
-    }
+}
+
 
 
