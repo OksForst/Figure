@@ -24,18 +24,15 @@ public class Rectangle implements Shape {
     }
 
     public double getSquare() {
-        double s = sideLenght1 * sideLenght2;
-        return s;
+        return (sideLenght1 * sideLenght2);
     }
 
     public double getPerimeter() {
-        double p = 2 * (sideLenght1 + sideLenght2);
-        return p;
+        return (2 * (sideLenght1 + sideLenght2));
     }
 
     public double getDiagonalLenght() {
-        double diagonal = sqrt(pow(sideLenght1, 2) + pow(sideLenght2, 2));
-        return diagonal;
+        return (sqrt(pow(sideLenght1, 2) + pow(sideLenght2, 2)));
     }
 
     public void getInfoFigure(String fileName) throws IOException {

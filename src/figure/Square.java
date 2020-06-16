@@ -22,18 +22,15 @@ public class Square implements Shape {
     }
 
     public double getSquare() {
-        double s = pow(sideLenght, 2);
-        return s;
+        return (pow(sideLenght, 2));
     }
 
     public double getPerimeter() {
-        double p = 4 * sideLenght;
-        return p;
+        return (4 * sideLenght);
     }
 
     public double getDiagonalLenght() {
-        double diagonal = sideLenght * sqrt(2);
-        return diagonal;
+        return (sideLenght * sqrt(2));
     }
 
     public void getInfoFigure(String fileName) throws IOException {
