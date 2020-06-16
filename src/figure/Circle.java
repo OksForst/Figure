@@ -30,18 +30,15 @@ public class Circle implements Shape {
     }
 
     public double getSquare() {
-        //double s = Math.PI * pow(radius, 2);
         return (Math.PI * pow(radius, 2));
     }
 
     public int getDiameter() {
-        int d = 2 * radius;
-        return d;
+        return (2 * radius);
     }
 
     public double getPerimeter() {
-        double p = 2 * Math.PI * radius;
-        return p;
+        return (2 * Math.PI * radius);
     }
 
     public void getInfoFigure(String fileName) throws IOException {
