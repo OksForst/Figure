@@ -11,11 +11,6 @@ public class Rectangle implements Shape {
     private int sideLenght1;
     private int sideLenght2;
 
-    public Rectangle(int... parameters) {
-        sideLenght1 = parameters[0];
-        sideLenght2 = parameters[1];
-    }
-
     public Rectangle() {
     }
 

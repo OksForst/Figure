@@ -22,29 +22,36 @@ public class Main {
         }
 
         if (Files.exists(Paths.get(fileNameIn))) {
-            Shape figureFromFile = getFigureFromFile(fileNameIn);
-            if (figureFromFile == null) {
-                System.out.println("Неизвестная фигура");
-            } else {
+            String className = getFigureFromFile(fileNameIn);
+            if ((className.equals("Circle"))||(className.equals("Square"))||(className.equals("Rectangle"))){
+                int param [] = getParametersFromFile(fileNameIn);
+                Shape figureFromFile = getClassInstance(className,param);
                 figureFromFile.getInfoFigure(fileNameOut);
-            }
-        } else {
-            System.out.println("Данный файл не найден!");
+            } else {
+                System.out.println("Неизвестная фигура");
+            } 
+        }
+            else {
+            System.out.println("Данный файл не найден");
         }
     }
  
-    public static Shape getFigureFromFile(String fileName) throws IOException, Exception {
+    public static String getFigureFromFile(String fileName) throws IOException, Exception {
         List<String> lines = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());
         String className = lines.get(0).toLowerCase();
         className = className.substring(0, 1).toUpperCase() + className.substring(1);
+        return className;    
+    } 
+    
+    public static int[] getParametersFromFile(String fileName) throws IOException, Exception {
+        List<String> lines = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());       
         int[] params = new int[lines.size() - 1];
         for (int i = 0; i < lines.size() - 1; i++) {
             params[i] = Integer.parseInt(lines.get(i + 1));
         }
-        Shape classInstance = getClassInstance(className, params);
-        return classInstance;
+        return params;
     }
-
+    
     private static Shape getClassInstance(String className, int... parameters) throws Exception, ClassNotFoundException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, InstantiationException {
         Shape shape = null;
         try {
@@ -57,9 +64,9 @@ public class Main {
                 field.set(shape, parameters[paramId]);
             }
         } catch (ClassNotFoundException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException e) {
-            //LOG.error(e);
             System.exit(1);
         }
         return shape;
     }
 }
+

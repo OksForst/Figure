@@ -10,10 +10,6 @@ public class Square implements Shape {
 
     private int sideLenght;
 
-    public Square(int... parameters) {
-        sideLenght = parameters[0];
-    }
-
     public Square() {
     }
 

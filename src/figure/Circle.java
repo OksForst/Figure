@@ -9,20 +9,8 @@ import java.io.FileWriter;
 public class Circle implements Shape {
 
     private int radius;
-    private String name = "default";
-    //public Circle(int ... parameters) {
-    //radius = parameters[0];
-    //}
-
+   
     public Circle() {
-
-    }
-
-    public Circle(int radius, String name) {
-
-        this.radius = radius;
-        this.name = name;
-
     }
 
     public String getName() {
